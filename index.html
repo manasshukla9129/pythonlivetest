@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python MCQ Live Class Test</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Dark Theme Colors */
+            --bg-gradient: radial-gradient(circle at top right, #1a103c 0%, #090615 60%, #05040a 100%);
+            --card-bg: rgba(23, 18, 44, 0.6);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --text-primary: #ffffff;
+            --text-secondary: #b3aed2;
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #d946ef;
+            --accent-glow: rgba(139, 92, 246, 0.3);
+            
+            --correct-bg: rgba(16, 185, 129, 0.15);
+            --correct-border: #10b981;
+            --correct-text: #34d399;
+            --correct-glow: rgba(16, 185, 129, 0.4);
+            
+            --incorrect-bg: rgba(239, 68, 68, 0.15);
+            --incorrect-border: #ef4444;
+            --incorrect-text: #f87171;
+            --incorrect-glow: rgba(239, 68, 68, 0.4);
+            
+            --nav-bg: rgba(15, 12, 33, 0.85);
+            --sidebar-bg: rgba(12, 9, 27, 0.95);
+            --code-bg: #151128;
+            --code-text: #38bdf8;
+            --btn-bg: rgba(255, 255, 255, 0.05);
+            --btn-border: rgba(255, 255, 255, 0.08);
+            
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            
+            --font-outfit: 'Outfit', sans-serif;
+            --font-inter: 'Inter', sans-serif;
+            --font-code: 'Fira Code', monospace;
+        }
+
+        [data-theme="light"] {
+            /* Light Theme Colors */
+            --bg-gradient: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%);
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-border: rgba(99, 102, 241, 0.12);
+            --text-primary: #1e1b4b;
+            --text-secondary: #4f46e5;
+            --accent-primary: #6366f1;
+            --accent-secondary: #ec4899;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            
+            --correct-bg: rgba(209, 250, 229, 0.8);
+            --correct-border: #059669;
+            --correct-text: #065f46;
+            --correct-glow: rgba(5, 150, 105, 0.2);
+            
+            --incorrect-bg: rgba(254, 226, 226, 0.8);
+            --incorrect-border: #dc2626;
+            --incorrect-text: #991b1b;
+            --incorrect-glow: rgba(220, 38, 38, 0.2);
+            
+            --nav-bg: rgba(255, 255, 255, 0.85);
+            --sidebar-bg: rgba(255, 255, 255, 0.98);
+            --code-bg: #f0f4f8;
+            --code-text: #1e1b4b;
+            --btn-bg: #ffffff;
+            --btn-border: rgba(99, 102, 241, 0.15);
+            
+            --shadow-sm: 0 4px 6px -1px rgba(99, 102, 241, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(99, 102, 241, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(99, 102, 241, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-inter);
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 50px;
+        }
+
+        /* Sticky Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 12px 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-title {
+            font-family: var(--font-outfit);
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .live-badge {
+            background: #ef4444;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn-theme {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* Dashboard & Progress Stats */
+        .dashboard {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+        }
+
+        .stat-val {
+            font-family: var(--font-outfit);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .progress-bar-container {
+            flex-grow: 1;
+            max-width: 400px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 999px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            border-radius: 999px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Main Container layout */
+        .main-container {
+            max-width: 1200px;
+            margin: 24px auto 0 auto;
+            width: 100%;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 24px;
+            position: relative;
+        }
+
+        /* MCQ Quiz List */
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .q-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 28px;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .q-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--card-border);
+            transition: background-color 0.3s;
+        }
+
+        .q-card.answered-correct::before {
+            background: var(--correct-border);
+        }
+
+        .q-card.answered-incorrect::before {
+            background: var(--incorrect-border);
+        }
+
+        .q-content-top {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .q-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: var(--font-outfit);
+            font-weight: 500;
+        }
+
+        .q-num {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--card-border);
+        }
+
+        .q-orig {
+            opacity: 0.7;
+        }
+
+        .q-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Code Block Styling */
+        .code-block {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            border: 1px solid var(--card-border);
+        }
+
+        .code-block code {
+            font-family: var(--font-code);
+            font-size: 0.95rem;
+            color: var(--code-text);
+            line-height: 1.5;
+        }
+
+        /* Options layout */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .option-btn {
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            color: var(--text-primary);
+            padding: 14px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+            font-family: var(--font-inter);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            width: 100%;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .option-btn:hover:not(:disabled) {
+            transform: translateX(4px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        /* Option selection states */
+        .option-btn.selected-correct {
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: var(--correct-text) !important;
+            box-shadow: 0 0 15px var(--correct-glow) !important;
+            font-weight: 600;
+        }
+
+        .option-btn.selected-incorrect {
+            background: var(--incorrect-bg) !important;
+            border-color: var(--incorrect-border) !important;
+            color: var(--incorrect-text) !important;
+            box-shadow: 0 0 15px var(--incorrect-glow) !important;
+            font-weight: 600;
+        }
+
+        .option-btn.reveal-correct {
+            background: var(--correct-bg) !important;
+            border-color: var(--correct-border) !important;
+            color: var(--correct-text) !important;
+            border-style: dashed !important;
+        }
+
+        .option-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 900;
+        }
+
+        /* Pagination Buttons layout */
+        .pagination-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 12px 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-indicator {
+            font-family: var(--font-outfit);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Sidebar navigation grid */
+        .sidebar {
+            position: sticky;
+            top: 130px;
+            height: calc(100vh - 170px);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(16px);
+        }
+
+        .sidebar-title {
+            font-family: var(--font-outfit);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 10px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            overflow-y: auto;
+            flex-grow: 1;
+            padding-right: 4px;
+        }
+
+        /* Custom scrollbar for grid */
+        .grid-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .grid-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .grid-container::-webkit-scrollbar-thumb {
+            background: var(--card-border);
+            border-radius: 2px;
+        }
+
+        .grid-btn {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: var(--font-outfit);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .grid-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+            transform: scale(1.05);
+        }
+
+        .grid-btn.correct {
+            background: var(--correct-bg);
+            border-color: var(--correct-border);
+            color: var(--correct-text);
+            box-shadow: 0 0 8px var(--correct-glow);
+        }
+
+        .grid-btn.incorrect {
+            background: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+            color: var(--incorrect-text);
+            box-shadow: 0 0 8px var(--incorrect-glow);
+        }
+
+        .grid-btn.active-q {
+            border-color: var(--accent-primary) !important;
+            background: rgba(139, 92, 246, 0.15) !important;
+            box-shadow: 0 0 12px var(--accent-glow) !important;
+            color: var(--text-primary) !important;
+            transform: scale(1.1);
+        }
+
+        /* Custom Dialog Confirmation Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 4, 10, 0.8);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-card {
+            background: var(--nav-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 28px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+        .modal-title {
+            font-family: var(--font-outfit);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        .modal-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /* Floating sidebar trigger on mobile */
+        .sidebar-toggle-btn {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 200;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 0;
+                right: -320px;
+                width: 300px;
+                height: 100vh;
+                z-index: 150;
+                transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                background: var(--sidebar-bg);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+                border-left: 1px solid var(--card-border);
+            }
+
+            .sidebar.active {
+                right: 0;
+                top: 0;
+                height: 100vh;
+            }
+
+            .sidebar-card {
+                height: 100%;
+                border-radius: 0;
+                border: none;
+            }
+
+            .sidebar-toggle-btn {
+                display: flex;
+            }
+        }
+
+        /* Fixed Mobile Bottom Nav */
+        .mobile-fixed-nav {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding-bottom: 72px;
+            }
+            header {
+                display: block;
+                padding: 8px 12px;
+            }
+            .header-title {
+                font-size: 1.1rem;
+            }
+            .youtube-banner {
+                display: none;
+            }
+            .live-badge {
+                display: none;
+            }
+            .dashboard {
+                gap: 8px;
+                padding: 8px 10px;
+                flex-wrap: wrap;
+            }
+            .stat-item {
+                font-size: 0.8rem;
+            }
+            .stat-val {
+                font-size: 0.85rem;
+            }
+            .progress-bar-container {
+                display: none;
+            }
+            .instruction-banner {
+                display: none;
+            }
+            .main-container {
+                padding: 0 12px;
+                margin-top: 10px;
+            }
+            .q-card {
+                padding: 16px;
+                min-height: auto;
+            }
+            /* Hide regular pagination on mobile — replaced by fixed footer */
+            .pagination-container {
+                display: none;
+            }
+            .btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            .btn-theme {
+                width: 34px;
+                height: 34px;
+            }
+            /* Fixed bottom nav visible on mobile */
+            .mobile-fixed-nav {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 180;
+                background: var(--nav-bg);
+                backdrop-filter: blur(14px);
+                border-top: 1px solid var(--card-border);
+                padding: 10px 16px;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+            }
+            .mobile-fixed-nav .btn {
+                flex: 1;
+                justify-content: center;
+                padding: 10px 8px;
+                font-size: 0.85rem;
+            }
+            .mobile-nav-indicator {
+                font-family: var(--font-outfit);
+                font-weight: 600;
+                font-size: 0.82rem;
+                color: var(--text-secondary);
+                text-align: center;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+        }
+
+        /* YouTube Banner Styles */
+        .youtube-banner {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        .youtube-icon {
+            width: 18px;
+            height: 18px;
+            color: #ff0000;
+            flex-shrink: 0;
+        }
+        .youtube-name {
+            font-family: var(--font-outfit);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.2px;
+        }
+        .yt-sub-btn {
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: white;
+            text-decoration: none;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-family: var(--font-outfit);
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .yt-sub-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+            color: white;
+        }
+
+        /* Instruction Alert Banner */
+        .instruction-banner {
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 12px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-sm);
+            animation: borderGlow 4s infinite alternate;
+        }
+        @keyframes borderGlow {
+            0% { border-color: rgba(139, 92, 246, 0.25); box-shadow: 0 0 5px rgba(139, 92, 246, 0.1); }
+            100% { border-color: rgba(217, 70, 239, 0.5); box-shadow: 0 0 15px rgba(217, 70, 239, 0.2); }
+        }
+        .instruction-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .instruction-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="header-top">
+                <div class="header-title-section" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <h1 class="header-title">Python Live MCQ Test</h1>
+                        <span class="live-badge">Live Class</span>
+                    </div>
+                    <div class="youtube-banner">
+                        <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.388.511a3.002 3.002 0 0 0-2.11 2.107C0 8.053 0 12 0 12s0 3.947.502 5.837a3.003 3.003 0 0 0 2.11 2.107C4.495 20.455 12 20.455 12 20.455s7.505 0 9.388-.511a3.003 3.003 0 0 0 2.11-2.107C24 15.947 24 12 24 12s0-3.947-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        <span class="youtube-name">Manas Sir Computer Classes</span>
+                        <a href="https://www.youtube.com/@ManasSirComputerClasses" target="_blank" class="yt-sub-btn">Like & Subscribe</a>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-theme" id="theme-btn" title="Toggle Theme">🌙</button>
+                    <button class="btn" id="reset-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                        Restart
+                    </button>
+                </div>
+            </div>
+            
+            <div class="dashboard">
+                <div class="stat-item">
+                    <span class="stat-label">Attempted:</span>
+                    <span class="stat-val" id="attempted-stat">0 / 140</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="test-progress-bar"></div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Score:</span>
+                    <span class="stat-val" id="score-stat">0 / 0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Accuracy:</span>
+                    <span class="stat-val" id="accuracy-stat">0%</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- MCQ Question Container -->
+        <section class="quiz-container">
+            <!-- Instruction Alert Banner -->
+            <div class="instruction-banner">
+                <div class="instruction-icon">📢</div>
+                <div class="instruction-text">लाइव क्लास निर्देश: सभी स्टूडेंट्स को हर प्रश्न का उत्तर यूट्यूब लाइव चैट या कमेंट बॉक्स में बताना है!</div>
+            </div>
+            
+            <!-- Active Question Card -->
+            <div id="active-question-container"></div>
+            
+            <!-- Pagination Navigation Panel -->
+            <div class="pagination-container">
+                <button class="btn" id="prev-question-btn">← Prev (पिछला)</button>
+                <span class="nav-indicator" id="nav-indicator-text">Question 1 of 140</span>
+                <button class="btn" id="next-question-btn">Next (अगला) →</button>
+            </div>
+        </section>
+
+        <!-- Navigation Grid Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-card">
+                <div class="sidebar-title">
+                    <span>Questions Navigator</span>
+                    <span id="grid-attempted">0 / 140</span>
+                </div>
+                <div class="grid-container" id="navigator-grid"></div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Fixed Bottom Navigation Bar (Mobile Only) -->
+    <div class="mobile-fixed-nav" id="mobile-fixed-nav">
+        <button class="btn" id="mobile-prev-btn">← Prev</button>
+        <span class="mobile-nav-indicator" id="mobile-nav-indicator">Q 1 / 140</span>
+        <button class="btn" id="mobile-next-btn">Next →</button>
+    </div>
+
+    <!-- Floating navigation button for smaller screens -->
+    <button class="sidebar-toggle-btn" id="sidebar-toggle" title="Open Navigator">📋</button>
+
+    <!-- Custom Confirmation Modal Dialog -->
+    <div class="modal-overlay" id="confirm-modal">
+        <div class="modal-card">
+            <h3 class="modal-title">टेस्ट रीस्टार्ट करें?</h3>
+            <p class="modal-desc">क्या आप सचमुच टेस्ट रीस्टार्ट करना चाहते हैं? इससे आपकी प्रोग्रेस और प्रश्नों का क्रम बदल जाएगा।</p>
+            <div class="modal-buttons">
+                <button class="btn" id="confirm-cancel-btn">नहीं, रद्द करें</button>
+                <button class="btn" id="confirm-ok-btn" style="background: var(--correct-bg); border-color: var(--correct-border); color: var(--correct-text);">हाँ, रीस्टार्ट करें</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script tags -->
+    <script src="questions.js"></script>
+    <script>
+        // Check local storage for Theme
+        const themeBtn = document.getElementById('theme-btn');
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeBtn.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+        themeBtn.addEventListener('click', () => {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('theme', currentTheme);
+            themeBtn.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // Mobile Navigator Drawer toggle
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        
+        sidebarToggle.addEventListener('click', (e) => {
+            sidebar.classList.toggle('active');
+            sidebarToggle.textContent = sidebar.classList.contains('active') ? '❌' : '📋';
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target !== sidebarToggle) {
+                sidebar.classList.remove('active');
+                sidebarToggle.textContent = '📋';
+            }
+        });
+
+        // Escape HTML for safe rendering in code block
+        function escapeHTML(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Quiz State Management
+        let shuffledIndices = [];
+        let userAnswers = {}; // Map of originalId (1-based) -> selected index (0-3)
+        let currentQuestionIndex = 0; // 0 to 139
+
+        // Load or initialize state
+        function initQuizState() {
+            // Load Shuffled indices
+            const savedOrder = sessionStorage.getItem('py_test_shuffled_order');
+            if (savedOrder) {
+                shuffledIndices = JSON.parse(savedOrder);
+            } else {
+                // Generate and shuffle order
+                shuffledIndices = Array.from({length: questionsData.length}, (_, i) => i);
+                // Fisher-Yates Shuffle
+                for (let i = shuffledIndices.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffledIndices[i], shuffledIndices[j]] = [shuffledIndices[j], shuffledIndices[i]];
+                }
+                sessionStorage.setItem('py_test_shuffled_order', JSON.stringify(shuffledIndices));
+            }
+
+            // Load user answers
+            const savedAnswers = sessionStorage.getItem('py_test_user_answers');
+            if (savedAnswers) {
+                userAnswers = JSON.parse(savedAnswers);
+            } else {
+                userAnswers = {};
+            }
+
+            // Load current active question index
+            const savedIndex = sessionStorage.getItem('py_test_current_index');
+            if (savedIndex !== null) {
+                currentQuestionIndex = parseInt(savedIndex, 10);
+                // boundary checks
+                if (currentQuestionIndex < 0 || currentQuestionIndex >= questionsData.length) {
+                    currentQuestionIndex = 0;
+                }
+            } else {
+                currentQuestionIndex = 0;
+            }
+        }
+
+        // Render Dashboard Stats
+        function updateStats() {
+            const total = questionsData.length;
+            const attempted = Object.keys(userAnswers).length;
+            
+            let correct = 0;
+            Object.entries(userAnswers).forEach(([origId, chosenIdx]) => {
+                const q = questionsData.find(item => item.id == origId);
+                if (q && q.correctAnswer === chosenIdx) {
+                    correct++;
+                }
+            });
+
+            // Update DOM
+            document.getElementById('attempted-stat').textContent = `${attempted} / ${total}`;
+            document.getElementById('grid-attempted').textContent = `${attempted} / ${total}`;
+            document.getElementById('score-stat').textContent = `${correct} / ${attempted}`;
+            
+            const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+            document.getElementById('accuracy-stat').textContent = `${accuracy}%`;
+
+            const percentage = (attempted / total) * 100;
+            document.getElementById('test-progress-bar').style.width = `${percentage}%`;
+        }
+
+        // Render Sidebar Navigation Grid
+        function renderNavigationGrid() {
+            const grid = document.getElementById('navigator-grid');
+            grid.innerHTML = '';
+
+            // Render numbers 1 to 140 matching the current shuffled position of the questions
+            shuffledIndices.forEach((shuffledIndex, position) => {
+                const q = questionsData[shuffledIndex];
+                const origId = q.id;
+                const gridBtn = document.createElement('a');
+                gridBtn.href = '#';
+                gridBtn.className = 'grid-btn';
+                gridBtn.textContent = position + 1;
+                gridBtn.id = `grid-btn-${origId}`;
+
+                // Set initial status colors if already answered
+                if (userAnswers.hasOwnProperty(origId)) {
+                    const chosen = userAnswers[origId];
+                    if (chosen === q.correctAnswer) {
+                        gridBtn.classList.add('correct');
+                    } else {
+                        gridBtn.classList.add('incorrect');
+                    }
+                }
+
+                // Add active question highlighting
+                if (position === currentQuestionIndex) {
+                    gridBtn.classList.add('active-q');
+                }
+
+                gridBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Navigate to question
+                    navigateToQuestion(position);
+                    // On mobile, close sidebar on click
+                    if (sidebar.classList.contains('active')) {
+                        sidebar.classList.remove('active');
+                        sidebarToggle.textContent = '📋';
+                    }
+                });
+
+                grid.appendChild(gridBtn);
+            });
+        }
+
+        // Render the Active Question Card
+        function renderActiveQuestion() {
+            const container = document.getElementById('active-question-container');
+            container.innerHTML = '';
+
+            const q = questionsData[shuffledIndices[currentQuestionIndex]];
+            const origId = q.id;
+            
+            const card = document.createElement('article');
+            card.className = 'q-card';
+            card.id = `q-card-${origId}`;
+
+            // Set border color indicator if answered
+            if (userAnswers.hasOwnProperty(origId)) {
+                const chosen = userAnswers[origId];
+                if (chosen === q.correctAnswer) {
+                    card.classList.add('answered-correct');
+                } else {
+                    card.classList.add('answered-incorrect');
+                }
+            }
+
+            // Top container to enforce vertical spacing
+            const topContent = document.createElement('div');
+            topContent.className = 'q-content-top';
+
+            // Header metadata
+            const meta = document.createElement('div');
+            meta.className = 'q-meta';
+            meta.innerHTML = `
+                <span class="q-num">Q. ${currentQuestionIndex + 1} / ${questionsData.length}</span>
+            `;
+            topContent.appendChild(meta);
+
+            // Question text in Hindi
+            const text = document.createElement('h2');
+            text.className = 'q-text';
+            text.textContent = q.question;
+            topContent.appendChild(text);
+
+            // Code block (if any)
+            if (q.code && q.code.trim()) {
+                const pre = document.createElement('pre');
+                pre.className = 'code-block';
+                pre.innerHTML = `<code>${escapeHTML(q.code)}</code>`;
+                topContent.appendChild(pre);
+            }
+
+            card.appendChild(topContent);
+
+            // Options Grid
+            const optionsGrid = document.createElement('div');
+            optionsGrid.className = 'options-grid';
+
+            const optionLetters = ['A', 'B', 'C', 'D'];
+            q.options.forEach((optText, optIdx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.id = `q-${origId}-opt-${optIdx}`;
+                
+                // Left Text
+                const leftContent = document.createElement('span');
+                leftContent.textContent = `${optionLetters[optIdx]}) ${optText}`;
+                btn.appendChild(leftContent);
+
+                // Status Indicator Icon inside button
+                const iconSpan = document.createElement('span');
+                iconSpan.className = 'option-icon';
+                btn.appendChild(iconSpan);
+
+                // Configure state if already answered
+                if (userAnswers.hasOwnProperty(origId)) {
+                    btn.disabled = true;
+                    const chosen = userAnswers[origId];
+                    
+                    if (optIdx === q.correctAnswer) {
+                        btn.classList.add('reveal-correct');
+                        iconSpan.innerHTML = '✓';
+                    }
+                    
+                    if (chosen === optIdx) {
+                        if (chosen === q.correctAnswer) {
+                            btn.classList.remove('reveal-correct');
+                            btn.classList.add('selected-correct');
+                        } else {
+                            btn.classList.add('selected-incorrect');
+                            iconSpan.innerHTML = '✗';
+                        }
+                    }
+                } else {
+                    // Attach Event listener
+                    btn.addEventListener('click', () => handleOptionSelection(origId, optIdx, q.correctAnswer));
+                }
+
+                optionsGrid.appendChild(btn);
+            });
+
+            card.appendChild(optionsGrid);
+            container.appendChild(card);
+
+            // Update Page Controls state
+            document.getElementById('nav-indicator-text').textContent = `Question ${currentQuestionIndex + 1} of ${questionsData.length}`;
+            document.getElementById('prev-question-btn').disabled = currentQuestionIndex === 0;
+            document.getElementById('next-question-btn').disabled = currentQuestionIndex === questionsData.length - 1;
+        }
+
+        // Navigate to a specific question position
+        function navigateToQuestion(position) {
+            if (position < 0 || position >= questionsData.length) return;
+            
+            // Remove active highlight from current navigator grid item
+            const oldQ = questionsData[shuffledIndices[currentQuestionIndex]];
+            const oldBtn = document.getElementById(`grid-btn-${oldQ.id}`);
+            if (oldBtn) {
+                oldBtn.classList.remove('active-q');
+            }
+
+            // Set new index
+            currentQuestionIndex = position;
+            sessionStorage.setItem('py_test_current_index', currentQuestionIndex);
+
+            // Render and highlight new active button
+            renderActiveQuestion();
+            const newQ = questionsData[shuffledIndices[currentQuestionIndex]];
+            const newBtn = document.getElementById(`grid-btn-${newQ.id}`);
+            if (newBtn) {
+                newBtn.classList.add('active-q');
+                newBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // Navigation controls helpers
+        function navigatePrev() {
+            if (currentQuestionIndex > 0) {
+                navigateToQuestion(currentQuestionIndex - 1);
+            }
+        }
+
+        function navigateNext() {
+            if (currentQuestionIndex < questionsData.length - 1) {
+                navigateToQuestion(currentQuestionIndex + 1);
+            }
+        }
+
+        document.getElementById('prev-question-btn').addEventListener('click', navigatePrev);
+        document.getElementById('next-question-btn').addEventListener('click', navigateNext);
+
+        // Mobile fixed nav buttons
+        const mobilePrevBtn = document.getElementById('mobile-prev-btn');
+        const mobileNextBtn = document.getElementById('mobile-next-btn');
+        const mobileNavIndicator = document.getElementById('mobile-nav-indicator');
+
+        function updateMobileNavIndicator() {
+            if (mobileNavIndicator) {
+                mobileNavIndicator.textContent = `Q ${currentQuestionIndex + 1} / ${questionsData.length}`;
+            }
+            if (mobilePrevBtn) mobilePrevBtn.disabled = currentQuestionIndex === 0;
+            if (mobileNextBtn) mobileNextBtn.disabled = currentQuestionIndex === questionsData.length - 1;
+        }
+
+        if (mobilePrevBtn) mobilePrevBtn.addEventListener('click', () => { navigatePrev(); updateMobileNavIndicator(); });
+        if (mobileNextBtn) mobileNextBtn.addEventListener('click', () => { navigateNext(); updateMobileNavIndicator(); });
+
+        // Handle clicking on an option
+        function handleOptionSelection(origId, selectedIdx, correctIdx) {
+            // Guard
+            if (userAnswers.hasOwnProperty(origId)) return;
+
+            // Save to state
+            userAnswers[origId] = selectedIdx;
+            sessionStorage.setItem('py_test_user_answers', JSON.stringify(userAnswers));
+
+            // Visual feedback on card options
+            const card = document.getElementById(`q-card-${origId}`);
+            if (selectedIdx === correctIdx) {
+                card.classList.add('answered-correct');
+            } else {
+                card.classList.add('answered-incorrect');
+            }
+
+            // Disable all option buttons in this question and highlight correct/incorrect selection
+            for (let i = 0; i < 4; i++) {
+                const btn = document.getElementById(`q-${origId}-opt-${i}`);
+                if (btn) {
+                    btn.disabled = true;
+                    const iconSpan = btn.querySelector('.option-icon');
+                    
+                    if (i === correctIdx) {
+                        btn.classList.add('reveal-correct');
+                        iconSpan.innerHTML = '✓';
+                    }
+                    
+                    if (i === selectedIdx) {
+                        if (selectedIdx === correctIdx) {
+                            btn.classList.remove('reveal-correct');
+                            btn.classList.add('selected-correct');
+                        } else {
+                            btn.classList.add('selected-incorrect');
+                            iconSpan.innerHTML = '✗';
+                        }
+                    }
+                }
+            }
+
+            // Update navigator grid button colors
+            const gridBtn = document.getElementById(`grid-btn-${origId}`);
+            if (gridBtn) {
+                if (selectedIdx === correctIdx) {
+                    gridBtn.classList.add('correct');
+                } else {
+                    gridBtn.classList.add('incorrect');
+                }
+            }
+
+            // Update stats
+            updateStats();
+        }
+
+        // Custom Confirmation Modal Actions
+        const confirmModal = document.getElementById('confirm-modal');
+        const resetBtn = document.getElementById('reset-btn');
+        const cancelResetBtn = document.getElementById('confirm-cancel-btn');
+        const confirmResetBtn = document.getElementById('confirm-ok-btn');
+
+        resetBtn.addEventListener('click', () => {
+            confirmModal.classList.add('active');
+        });
+
+        cancelResetBtn.addEventListener('click', () => {
+            confirmModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside card
+        confirmModal.addEventListener('click', (e) => {
+            if (e.target === confirmModal) {
+                confirmModal.classList.remove('active');
+            }
+        });
+
+        confirmResetBtn.addEventListener('click', () => {
+            confirmModal.classList.remove('active');
+            
+            // Clear answers & current index
+            sessionStorage.removeItem('py_test_user_answers');
+            sessionStorage.removeItem('py_test_shuffled_order');
+            sessionStorage.removeItem('py_test_current_index');
+            
+            // Re-init and re-render
+            initQuizState();
+            updateStats();
+            renderNavigationGrid();
+            renderActiveQuestion();
+        });
+
+        // Keyboard navigation shortcuts (Left Arrow / Right Arrow)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                navigatePrev();
+            } else if (e.key === 'ArrowRight') {
+                navigateNext();
+            }
+        });
+
+        // Initialize Application
+        function initApp() {
+            initQuizState();
+            updateStats();
+            renderNavigationGrid();
+            renderActiveQuestion();
+            updateMobileNavIndicator();
+        }
+
+        // Run
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
