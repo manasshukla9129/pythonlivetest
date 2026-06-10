@@ -374,7 +374,7 @@ const questionsData = [
   {
     "id": 32,
     "question": "Output क्या होगा?",
-    "code": "x=10\ndef test():\nglobal x\nx=20\ntest()\nprint(x)",
+    "code": "x=10\ndef test():\n\tglobal x\n\tx=20\ntest()\nprint(x)",
     "options": [
       "10",
       "20",
