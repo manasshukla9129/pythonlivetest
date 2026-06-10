@@ -1010,7 +1010,7 @@ const questionsData = [
   {
     "id": 85,
     "question": "Output क्या होगा?",
-    "code": "print(__name__)",
+    "code": "print(__name__)\nजब File Direct Run हो।",
     "options": [
       "filename",
       "main",
@@ -1202,7 +1202,7 @@ const questionsData = [
   {
     "id": 101,
     "question": "Output क्या होगा?",
-    "code": "if 0:\nprint(\"A\")\nelse:\nprint(\"B\")",
+    "code": "if 0:\n\tprint(\"A\")\nelse:\n\tprint(\"B\")",
     "options": [
       "A",
       "B",
@@ -1226,7 +1226,7 @@ const questionsData = [
   {
     "id": 103,
     "question": "Output क्या होगा?",
-    "code": "for i in range(3):\npass\nprint(i)",
+    "code": "for i in range(3):\n\tpass\nprint(i)",
     "options": [
       "2",
       "3",
@@ -1310,7 +1310,7 @@ const questionsData = [
   {
     "id": 110,
     "question": "Output क्या होगा?",
-    "code": "def fun(a,b=5):\nreturn a+b\nprint(fun(10))",
+    "code": "def fun(a,b=5):\n\treturn a+b\nprint(fun(10))",
     "options": [
       "10",
       "15",
@@ -1349,7 +1349,7 @@ const questionsData = [
     "code": "print(\"python\".replace(\"p\",\"j\"))",
     "options": [
       "python",
-      "jython",
+      "Jython",
       "jython",
       "Error"
     ],
@@ -1514,7 +1514,7 @@ const questionsData = [
   {
     "id": 127,
     "question": "Output क्या होगा?",
-    "code": "x=5\ndef test():\nx=10\ntest()\nprint(x)",
+    "code": "x=5\ndef test():\n\tx=10\ntest()\nprint(x)",
     "options": [
       "5",
       "10",
